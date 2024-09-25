@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pxl.zkmall.product.dao.SpuInfoDescDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.pxl.zkmall.product.entity.SpuInfoDescEntity" id="spuInfoDescMap">
+        <result property="spuId" column="spu_id"/>
+        <result property="decript" column="decript"/>
+    </resultMap>
+    <select id="selectById" resultType="com.pxl.zkmall.product.entity.SpuInfoDescEntity">
+        SELECT * FROM pms_spu_info_desc WHERE spu_id = #{spuId}
+    </select>
+
+</mapper>

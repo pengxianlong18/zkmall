@@ -1,0 +1,56 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    #MySQL配置
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.6.128:3306/zkmall_pms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+
+  application:
+    name: zkmall-product
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    alicloud:
+      access-key: LTAI5tFdNH1JoufQJo37YALc
+      secret-key: HfncNr2nXaRSaagOg9vhlhYS1Mw7VN
+      oss:
+        endpoint: oss-cn-guangzhou.aliyuncs.com
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  thymeleaf:
+    cache: false
+  redis:
+    host: 192.168.6.128
+    port: 6379
+    password:
+
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  type-aliases-package: com.pxl.zkmall.product.entity
+
+server:
+  port: 10000
+
+logging:
+  level:
+    com.pxl.zkmall: error
+
+
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 60000
+        read-timeout: 30000
+

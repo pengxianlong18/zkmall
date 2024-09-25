@@ -1,0 +1,88 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: product_route
+          uri: lb://zkmall-product
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
+
+        - id: third_party_route
+          uri: lb://zkmall-third-party
+          predicates:
+            - Path=/api/thirdparty/**
+          filters:
+            - RewritePath=/api/thirdparty/(?<segment>.*),/$\{segment}
+
+        - id: search_route
+          uri: lb://zkmall-search
+          predicates:
+            - Path=/api/search/**
+          filters:
+            - RewritePath=/api/search/(?<segment>/?.*),/$\{segment}
+
+        - id: coupon_route
+          uri: lb://zkmall-coupon
+          predicates:
+            - Path=/api/coupon/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*),/$\{segment}
+
+        - id: ware_route
+          uri: lb://zkmall-ware
+          predicates:
+            - Path=/api/ware/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*),/$\{segment}
+
+        - id: member_route
+          uri: lb://zkmall-member
+          predicates:
+            - Path=/api/member/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
+
+        - id: admin_route
+          uri: lb://renren-fast # 路由给renren-fast，lb代表负载均衡
+          predicates: # 什么情况下路由给它
+            - Path=/api/** # 默认前端项目都带上api前缀，
+          filters:
+            - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}
+
+        - id: zkmall_host_route
+          uri: lb://zkmall-product # 路由给renren-fast，lb代表负载均衡
+          predicates:
+            - Host=zkmall.com,item.zkmall.com
+
+        - id: zkmall_search_route
+          uri: lb://zkmall-search
+          predicates:
+            - Host=search.zkmall.com
+
+        - id: zkmall_auth_route
+          uri: lb://zkmall-auth-server
+          predicates:
+            - Host=auth.zkmall.com
+
+        - id: zkmall_cart_route
+          uri: lb://zkmall-cart
+          predicates:
+            - Host=cart.zkmall.com
+
+        - id: zkmall_order_route
+          uri: lb://zkmall-order
+          predicates:
+            - Host=order.zkmall.com
+
+        - id: zkmall_member_route
+          uri: lb://zkmall-member
+          predicates:
+            - Host=member.zkmall.com
+
+
+##请求的http://localhost:88/api/product/category/list/tree不存在
+##映射后的路径为http://localhost:8001/renren-fast/product/category/list/tree
+##但是只有通过http://localhost:10000/product/category/list/tree路径才能够正常访问，所以会报404异常。
+

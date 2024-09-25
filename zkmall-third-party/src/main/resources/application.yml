@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    alicloud:
+      access-key: LTAI5tFdNH1JoufQJo37YALc
+      secret-key: HfncNr2nXaRSaagOg9vhlhYS1Mw7VN
+      oss:
+        endpoint: oss-cn-guangzhou.aliyuncs.com
+      sms:
+          host: https://zwp.market.alicloudapi.com
+          path: /sms/sendv2
+          appcode: f0ed010ef6c44ea6a5775f825c011169
+
+  application:
+    name: zkmall-third-party
+server:
+  port: 30000

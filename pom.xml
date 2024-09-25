@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.pxl.zkmall</groupId>
+    <artifactId>zkmall</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>zkmall</name>
+    <description>聚合服务</description>
+    <packaging>pom</packaging>
+    <modules>
+        <module>zkmall-product</module>
+        <module>zkmall-ware</module>
+        <module>zkmall-order</module>
+        <module>zkmall-coupon</module>
+        <module>zkmall-member</module>
+        <module>renren-fast</module>
+        <module>renren-generator</module>
+        <module>zkmall-common</module>
+        <module>zkmall-gateway</module>
+        <module>zkmall-third-party</module>
+        <module>zkmall-search</module>
+        <module>zkmall-auth-server</module>
+    </modules>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+</project>
